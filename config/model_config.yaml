@@ -1,0 +1,53 @@
+# Model Configuration for Real-Time Fraud Detection
+model:
+  name: "FraudDetectionModel"
+  version: "1.0"
+  description: "Model for detecting fraudulent transactions in real-time."
+
+# Model Hyperparameters
+hyperparameters:
+  learning_rate: 0.001
+  batch_size: 32
+  num_epochs: 50
+  optimizer: "adam"
+  loss_function: "binary_crossentropy"
+  
+# Feature Configuration
+features:
+  input_features:
+    - transaction_amount
+    - transaction_time
+    - merchant_id
+    - user_id
+    - user_location
+    - user_device
+    - transaction_type
+    - previous_transactions
+    - transaction_status
+  output_feature: "is_fraud"
+  
+# Training Configuration
+training:
+  train_test_split:
+    train_size: 0.8
+    random_state: 42
+  cross_validation:
+    k_fold: 5
+  
+# Evaluation Metrics
+evaluation_metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1_score
+  - roc_auc
+  
+# Logging and Monitoring
+logging:
+  log_level: INFO
+  log_file: "training.log"
+  
+# Save Configuration
+save:
+  model_path: "models/FraudDetectionModel.pkl"
+  metadata_path: "models/model_metadata.json"

@@ -1,0 +1,110 @@
+{
+    "name": "FraudDetectionDataFactory",
+    "description": "Data Factory for Real-Time Fraud Detection Pipeline",
+    "location": "East US",
+    "resource_group": "FraudDetectionResourceGroup",
+    "linked_services": [
+        {
+            "name": "AzureBlobStorage",
+            "type": "AzureBlobStorage",
+            "properties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=myblobstorageaccount;AccountKey=myBlobStorageKey;EndpointSuffix=core.windows.net",
+                "description": "Linked service for Azure Blob Storage"
+            }
+        },
+        {
+            "name": "AzureEventHub",
+            "type": "EventHub",
+            "properties": {
+                "connectionString": "Endpoint=sb://myeventhubnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=mySharedAccessKey;",
+                "description": "Linked service for Azure Event Hub"
+            }
+        },
+        {
+            "name": "AzureSQLDatabase",
+            "type": "AzureSqlDatabase",
+            "properties": {
+                "connectionString": "Server=tcp:myserver.database.windows.net,1433;Initial Catalog=mydatabase;Persist Security Info=False;User ID=myusername;Password=mypassword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+                "description": "Linked service for Azure SQL Database"
+            }
+        }
+    ],
+    "datasets": [
+        {
+            "name": "TransactionData",
+            "type": "AzureBlob",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "AzureBlobStorage",
+                    "type": "LinkedServiceReference"
+                },
+                "filePath": "fraud-events/",
+                "format": {
+                    "type": "JsonFormat"
+                }
+            }
+        },
+        {
+            "name": "ProcessedTransactionData",
+            "type": "AzureSQLTable",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "AzureSQLDatabase",
+                    "type": "LinkedServiceReference"
+                },
+                "tableName": "ProcessedTransactions"
+            }
+        }
+    ],
+    "pipelines": [
+        {
+            "name": "IngestFraudDataPipeline",
+            "activities": [
+                {
+                    "type": "Copy",
+                    "source": {
+                        "type": "BlobSource",
+                        "storeSettings": {
+                            "linkedServiceName": {
+                                "referenceName": "AzureBlobStorage",
+                                "type": "LinkedServiceReference"
+                            }
+                        }
+                    },
+                    "sink": {
+                        "type": "AzureSqlSink",
+                        "storeSettings": {
+                            "linkedServiceName": {
+                                "referenceName": "AzureSQLDatabase",
+                                "type": "LinkedServiceReference"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ModelTrainingPipeline",
+            "activities": [
+                {
+                    "type": "DatabricksNotebook",
+                    "linkedServiceName": {
+                        "referenceName": "AzureDatabricks",
+                        "type": "LinkedServiceReference"
+                    },
+                    "notebookPath": "/FraudDetection/TrainModel",
+                    "baseParameters": {
+                        "input": {
+                            "type": "DatasetReference",
+                            "referenceName": "TransactionData"
+                        },
+                        "output": {
+                            "type": "DatasetReference",
+                            "referenceName": "ProcessedTransactionData"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

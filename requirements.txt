@@ -1,0 +1,37 @@
+# Azure SDKs
+azure-eventhub==5.11.0
+azure-storage-blob==12.10.0
+azure-identity==1.8.0
+
+# Data Processing and Analysis
+pandas==1.5.3
+numpy==1.24.3
+scikit-learn==1.2.2
+scipy==1.10.0
+
+# Machine Learning
+tensorflow==2.14.0  # or use 'pytorch' based on your preference
+# If using PyTorch, uncomment the line below and comment the TensorFlow line
+# torch==2.0.1
+# torchvision==0.15.2
+
+# Model Deployment
+flask==2.3.2
+gunicorn==21.2.0
+
+# Data Serialization
+pyyaml==6.0
+jsonschema==4.17.3
+
+# Logging
+loguru==0.6.0
+
+# Jupyter Notebooks
+notebook==6.5.3
+
+# Testing
+pytest==7.3.1
+pytest-cov==4.0.0
+
+# Other Utilities
+requests==2.31.0

@@ -1,0 +1,182 @@
+[
+    {
+        "transaction_id": 1,
+        "timestamp": "2024-10-10T08:30:00Z",
+        "user_id": "12345",
+        "amount": 250.00,
+        "currency": "USD",
+        "merchant_id": "merchant_001",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 2,
+        "timestamp": "2024-10-10T08:32:00Z",
+        "user_id": "12346",
+        "amount": 5000.00,
+        "currency": "USD",
+        "merchant_id": "merchant_002",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 3,
+        "timestamp": "2024-10-10T08:35:00Z",
+        "user_id": "12347",
+        "amount": 300.00,
+        "currency": "USD",
+        "merchant_id": "merchant_001",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 4,
+        "timestamp": "2024-10-10T08:40:00Z",
+        "user_id": "12345",
+        "amount": 750.00,
+        "currency": "USD",
+        "merchant_id": "merchant_003",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 5,
+        "timestamp": "2024-10-10T08:45:00Z",
+        "user_id": "12348",
+        "amount": 250.00,
+        "currency": "EUR",
+        "merchant_id": "merchant_004",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 6,
+        "timestamp": "2024-10-10T08:50:00Z",
+        "user_id": "12349",
+        "amount": 1000.00,
+        "currency": "USD",
+        "merchant_id": "merchant_002",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 7,
+        "timestamp": "2024-10-10T08:55:00Z",
+        "user_id": "12350",
+        "amount": 200.00,
+        "currency": "USD",
+        "merchant_id": "merchant_001",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 8,
+        "timestamp": "2024-10-10T09:00:00Z",
+        "user_id": "12345",
+        "amount": 500.00,
+        "currency": "USD",
+        "merchant_id": "merchant_005",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 9,
+        "timestamp": "2024-10-10T09:05:00Z",
+        "user_id": "12346",
+        "amount": 3500.00,
+        "currency": "USD",
+        "merchant_id": "merchant_006",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 10,
+        "timestamp": "2024-10-10T09:10:00Z",
+        "user_id": "12351",
+        "amount": 400.00,
+        "currency": "USD",
+        "merchant_id": "merchant_001",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 11,
+        "timestamp": "2024-10-10T09:15:00Z",
+        "user_id": "12352",
+        "amount": 8000.00,
+        "currency": "EUR",
+        "merchant_id": "merchant_007",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 12,
+        "timestamp": "2024-10-10T09:20:00Z",
+        "user_id": "12353",
+        "amount": 150.00,
+        "currency": "USD",
+        "merchant_id": "merchant_002",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 13,
+        "timestamp": "2024-10-10T09:25:00Z",
+        "user_id": "12354",
+        "amount": 600.00,
+        "currency": "USD",
+        "merchant_id": "merchant_001",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 14,
+        "timestamp": "2024-10-10T09:30:00Z",
+        "user_id": "12355",
+        "amount": 500.00,
+        "currency": "JPY",
+        "merchant_id": "merchant_004",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 15,
+        "timestamp": "2024-10-10T09:35:00Z",
+        "user_id": "12356",
+        "amount": 10000.00,
+        "currency": "USD",
+        "merchant_id": "merchant_005",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 16,
+        "timestamp": "2024-10-10T09:40:00Z",
+        "user_id": "12357",
+        "amount": 450.00,
+        "currency": "USD",
+        "merchant_id": "merchant_006",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 17,
+        "timestamp": "2024-10-10T09:45:00Z",
+        "user_id": "12358",
+        "amount": 1500.00,
+        "currency": "USD",
+        "merchant_id": "merchant_007",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 18,
+        "timestamp": "2024-10-10T09:50:00Z",
+        "user_id": "12359",
+        "amount": 600.00,
+        "currency": "EUR",
+        "merchant_id": "merchant_001",
+        "is_fraud": 1
+    },
+    {
+        "transaction_id": 19,
+        "timestamp": "2024-10-10T09:55:00Z",
+        "user_id": "12360",
+        "amount": 250.00,
+        "currency": "USD",
+        "merchant_id": "merchant_002",
+        "is_fraud": 0
+    },
+    {
+        "transaction_id": 20,
+        "timestamp": "2024-10-10T10:00:00Z",
+        "user_id": "12361",
+        "amount": 7500.00,
+        "currency": "USD",
+        "merchant_id": "merchant_003",
+        "is_fraud": 1
+    }
+]

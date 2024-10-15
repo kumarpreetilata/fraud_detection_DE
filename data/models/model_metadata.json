@@ -1,0 +1,43 @@
+import json
+from datetime import datetime
+from sklearn.ensemble import RandomForestClassifier
+
+def generate_model_metadata(model, metrics):
+    """Generate metadata for the trained model."""
+    metadata = {
+        "model_name": "Fraud Detection Model",
+        "model_type": "Random Forest",
+        "version": "1.0",
+        "training_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "hyperparameters": {
+            "n_estimators": model.n_estimators,
+            "max_depth": model.max_depth,
+            "min_samples_split": model.min_samples_split,
+            "min_samples_leaf": model.min_samples_leaf,
+            "random_state": model.random_state
+        },
+        "metrics": metrics,
+        "notes": "This model was trained using a dataset for fraud detection."
+    }
+    return metadata
+
+def save_metadata(metadata, filename):
+    """Save the model metadata to a JSON file."""
+    with open(filename, 'w') as json_file:
+        json.dump(metadata, json_file, indent=4)
+    print(f"Model metadata saved as {filename}")
+
+if __name__ == "__main__":
+    # Assume 'trained_model' is the model obtained after training
+    trained_model = RandomForestClassifier(n_estimators=100, random_state=42)
+    # Assuming the metrics are obtained after evaluation (you can replace these with your actual metrics)
+    metrics = {
+        "accuracy": 0.95,
+        "precision": 0.92,
+        "recall": 0.91,
+        "f1_score": 0.91
+    }
+
+    # Generate and save metadata
+    model_metadata = generate_model_metadata(trained_model, metrics)
+    save_metadata(model_metadata, 'model_metadata.json')

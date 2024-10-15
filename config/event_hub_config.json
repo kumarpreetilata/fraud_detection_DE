@@ -1,0 +1,26 @@
+{
+    "event_hub_namespace": "FraudDetectionEventHubNamespace",
+    "event_hub_name": "FraudDetectionEventHub",
+    "location": "East US",
+    "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+    },
+    "connection_strings": {
+        "primary": "Endpoint=sb://myeventhubnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=mySharedAccessKey;",
+        "secondary": "Endpoint=sb://myeventhubnamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=mySecondarySharedAccessKey;"
+    },
+    "event_processor": {
+        "consumer_group": "$Default",
+        "max_event_count": 100,
+        "prefetch_count": 100,
+        "checkpoint_store": {
+            "type": "Blob",
+            "connection_string": "DefaultEndpointsProtocol=https;AccountName=myblobstorageaccount;AccountKey=myBlobStorageKey;EndpointSuffix=core.windows.net",
+            "container_name": "checkpoints",
+            "blob_prefix": "eventhub-checkpoints/"
+        }
+    },
+    "description": "Event Hub for Real-Time Fraud Detection"
+}

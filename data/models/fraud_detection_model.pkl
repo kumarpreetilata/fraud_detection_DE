@@ -1,0 +1,45 @@
+import pandas as pd
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, accuracy_score
+
+def load_data(file_path):
+    """Load the dataset from a given file path."""
+    return pd.read_csv(file_path)
+
+def train_model(data):
+    """Train a Random Forest model on the data."""
+    # Assume 'features' contains the feature columns and 'target' contains the target column
+    features = data.drop(columns=['target'])  # Replace 'target' with the actual target column name
+    target = data['target']  # Replace 'target' with the actual target column name
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+    # Initialize and train the Random Forest Classifier
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+
+    # Make predictions and evaluate the model
+    predictions = model.predict(X_test)
+    print(classification_report(y_test, predictions))
+    print(f"Accuracy: {accuracy_score(y_test, predictions)}")
+
+    return model
+
+def save_model(model, filename):
+    """Save the trained model to a file."""
+    with open(filename, 'wb') as file:
+        pickle.dump(model, file)
+    print(f"Model saved as {filename}")
+
+if __name__ == "__main__":
+    # Load the data (provide the correct path to your CSV file)
+    data = load_data('path/to/your/data.csv')  # Replace with your actual data file path
+
+    # Train the model
+    trained_model = train_model(data)
+
+    # Save the model
+    save_model(trained_model, 'fraud_detection_model.pkl')
